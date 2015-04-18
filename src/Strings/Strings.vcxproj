@@ -43,10 +43,10 @@
     <OutDir>Debug\</OutDir>
     <IntDir>Debug\</IntDir>
     <NMakeBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)BuildTools\resgen.exe" "$(ProjectDir)Strings.resx" "$(TargetPath)"
 </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)BuildTools\resgen.exe" "$(ProjectDir)Strings.resx" "$(TargetPath)"
 </NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>del "$(TargetPath)"</NMakeCleanCommandLine>
     <NMakeOutput>$(OutDir)PaintDotNet.Strings.3.resources</NMakeOutput>
@@ -55,10 +55,10 @@
     <OutDir>Release\</OutDir>
     <IntDir>Release\</IntDir>
     <NMakeBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)BuildTools\resgen.exe" "$(ProjectDir)Strings.resx" "$(TargetPath)"
 </NMakeBuildCommandLine>
     <NMakeReBuildCommandLine>%40rem compiling English strings
-"$(SolutionDir)\BuildTools\resgen.exe" "$(ProjectDir)\Strings.resx" "$(TargetPath)"
+"$(SolutionDir)BuildTools\resgen.exe" "$(ProjectDir)Strings.resx" "$(TargetPath)"
 </NMakeReBuildCommandLine>
     <NMakeCleanCommandLine>del "$(TargetPath)"</NMakeCleanCommandLine>
     <NMakeOutput>$(OutDir)PaintDotNet.Strings.3.resources</NMakeOutput>
