@@ -652,9 +652,6 @@ copy "$(SolutionDir)\WiaProxy32\bin\$(ConfigurationName)\WiaProxy32.exe" "$(Targ
 @rem copy English strings over
 copy "$(SolutionDir)\Strings\$(ConfigurationName)\PaintDotNet.Strings.3.resources" "$(TargetDir)"
 
-@rem copy non-English strings (we won't copy the other file/image resource overrides)
-copy "$(SolutionDir)\Resources.mui\*.resources" "$(TargetDir)"
-
 :done
 rem call "$(ProjectDir)prejit.bat" "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
