@@ -622,10 +622,6 @@
 call "$(SolutionDir)Manifests\embedManifest.bat" "$(TargetPath)" "$(SolutionDir)Manifests\asInvoker.xml"
 call "$(SolutionDir)Manifests\embedManifest.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)" "$(SolutionDir)Manifests\asInvoker.xml"
 
-@rem Sign
-rem call "$(SolutionDir)signfile.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
-rem call "$(SolutionDir)signfile.bat" "$(TargetPath)"
-
 @rem copy Interop.WIA.dll over
 copy "$(SolutionDir)\Interop.WIA\Interop.WIA.dll" "$(TargetDir)"
 

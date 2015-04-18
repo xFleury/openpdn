@@ -276,9 +276,7 @@
     <PreBuildEvent>@rem register the WIA 2.0 library
 rem regsvr32 /s "$(SolutionDir)\WIAAutSDK\wiaaut.dll"
 </PreBuildEvent>
-    <PostBuildEvent>@rem Sign
-rem call "$(SolutionDir)signfile.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
-rem call "$(SolutionDir)signfile.bat" "$(TargetPath)"
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
