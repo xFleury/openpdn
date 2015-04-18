@@ -618,11 +618,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>@rem Embed manifest
-call "$(SolutionDir)Manifests\embedManifest.bat" "$(TargetPath)" "$(SolutionDir)Manifests\asInvoker.xml"
-call "$(SolutionDir)Manifests\embedManifest.bat" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)" "$(SolutionDir)Manifests\asInvoker.xml"
-
-@rem copy Interop.WIA.dll over
+    <PostBuildEvent>@rem copy Interop.WIA.dll over
 copy "$(SolutionDir)\Interop.WIA\Interop.WIA.dll" "$(TargetDir)"
 
 @rem Copy DDS over
@@ -646,9 +642,6 @@ copy "$(SolutionDir)\ShellExtension\ShellExtension_x86\$(ConfigurationName)\Shel
 copy "$(SolutionDir)\WiaProxy32\bin\$(ConfigurationName)\WiaProxy32.exe" "$(TargetDir)"
 
 @rem copy English strings over
-copy "$(SolutionDir)\Strings\$(ConfigurationName)\PaintDotNet.Strings.3.resources" "$(TargetDir)"
-
-:done
-rem call "$(ProjectDir)prejit.bat" "$(TargetPath)"</PostBuildEvent>
+copy "$(SolutionDir)\Strings\$(ConfigurationName)\PaintDotNet.Strings.3.resources" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
