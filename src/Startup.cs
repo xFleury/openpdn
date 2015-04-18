@@ -141,97 +141,6 @@ namespace PaintDotNet
             return returnVal;
         }
         
-        /// <summary>
-        /// Checks to make sure certain files are present, and tries to repair the problem.
-        /// </summary>
-        /// <returns>
-        /// true if any repairs had to be made, at which point PDN must be restarted.
-        /// false otherwise, if everything's okay.
-        /// </returns>
-        private bool CheckForImportantFiles()
-        {
-            string[] requiredFiles =
-                new string[]
-                {
-                    "FileTypes\\DdsFileType.dll",
-                    "ICSharpCode.SharpZipLib.dll",
-                    "Interop.WIA.dll",
-                    "PaintDotNet.Base.dll",
-                    "PaintDotNet.Core.dll",
-                    "PaintDotNet.Data.dll",
-                    "PaintDotNet.Effects.dll",
-                    "PaintDotNet.Resources.dll",
-                    //"PaintDotNet.Strings.3.DE.resources",
-                    //"PaintDotNet.Strings.3.ES.resources",
-                    //"PaintDotNet.Strings.3.FR.resources",
-                    //"PaintDotNet.Strings.3.IT.resources",
-                    //"PaintDotNet.Strings.3.JA.resources",
-                    //"PaintDotNet.Strings.3.KO.resources",
-                    //"PaintDotNet.Strings.3.PT-BR.resources",
-                    "PaintDotNet.Strings.3.resources",
-                    //"PaintDotNet.Strings.3.ZH-CN.resources",
-                    "PaintDotNet.StylusReader.dll",
-                    "PaintDotNet.SystemLayer.dll",
-                    //"SetupNgen.exe",
-                    "ShellExtension_x64.dll",
-                    "ShellExtension_x86.dll",
-                    "Squish_x64.dll",
-                    "Squish_x86.dll",
-                    "Squish_x86_SSE2.dll",
-                    //"UpdateMonitor.exe",
-                    "WiaProxy32.exe"
-                };
-
-            string dirName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            List<string> missingFiles = null;
-
-            foreach (string requiredFile in requiredFiles)
-            {
-                bool missing;
-
-                try
-                {
-                    string pathName = Path.Combine(dirName, requiredFile);
-                    FileInfo fileInfo = new FileInfo(pathName);
-                    missing = !fileInfo.Exists;
-                }
-
-                catch (Exception)
-                {
-                    missing = true;
-                }
-
-                if (missing)
-                {
-                    if (missingFiles == null)
-                    {
-                        missingFiles = new List<string>();
-                    }
-
-                    missingFiles.Add(requiredFile);
-                }
-            }
-
-            if (missingFiles == null)
-            {
-                return false;
-            }
-            else
-            {
-                if (Shell.ReplaceMissingFiles(missingFiles.ToArray()))
-                {
-                    // Everything is repaired and happy.
-                    return true;
-                }
-                else
-                {
-                    // Things didn't get fixed. Bail.
-                    Process.GetCurrentProcess().Kill();
-                    return false;
-                }
-            }
-        }
-
         public void Start()
         {
             // Set up unhandled exception handlers
@@ -245,24 +154,6 @@ namespace PaintDotNet
             // Initialize some misc. Windows Forms settings
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
-
-            // If any files are missing, try to repair.
-            // However, support /skipRepairAttempt for when developing in the IDE 
-            // so that we don't needlessly try to repair in that case.
-            if (this.args.Length > 0 && 
-                string.Compare(this.args[0], "/skipRepairAttempt", StringComparison.InvariantCultureIgnoreCase) == 0)
-            {
-                // do nothing: we need this so that we can run from IDE/debugger
-                // without it trying to repair itself all the time
-            }
-            else
-            {
-                if (CheckForImportantFiles())
-                {
-                    Startup.StartNewInstance(null, false, args);
-                    return;
-                }
-            }
 
             // The rest of the code is put in a separate method so that certain DLL's
             // won't get delay loaded until after we try to do repairs.
