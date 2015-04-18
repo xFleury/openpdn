@@ -21,14 +21,11 @@ namespace PaintDotNet
         public const string CopyrightFormat = 
             "Copyright © 2008 dotPDN LLC, Rick Brewster, Tom Jackson, and contributors. Portions Copyright © Microsoft Corporation. {0}";
 
-        public const string FeedbackEmail =
-              "" <-- You must specify an e-mail address for users to send feedback to.;
+        public const string FeedbackEmail = "feedback@example.com";
 
-        public const string CrashlogEmail =
-              "" <-- You must specify a contact e-mail address to be placed in the crash log.;
+        public const string CrashlogEmail = "crashlog@example.com";
 
-        public const string WebsiteUrl =
-              "" <-- You must specify a URL for the application's website.;
+        public const string WebsiteUrl = "example.com";
 
         public const string WebsitePageHelpMenu = "/redirect/main_hm.html";
 
@@ -42,8 +39,7 @@ namespace PaintDotNet
 
         public const string SearchEngineHelpMenu = "/redirect/search_hm.html";
 
-        public const string DonateUrlSetup =
-            "" <-- You must specify a destination URL for the donate button in the setup wizard.;        
+        public const string DonateUrlSetup = "example.com";
 
         public const string ExpiredPage = "redirect/pdnexpired.html";
 
@@ -62,7 +58,6 @@ Please e-mail this file to {0} so we can diagnose and fix the problem.
         public const string StartupUnhandledErrorFormatFallback =
             "There was an unhandled error, and Paint.NET must be closed. Refer to the file '{0}', which has been placed on your desktop, for more information.";
 
-        public const string SingleInstanceMonikerName = 
-            "" <-- You must specify a moniker name (only letters, no symbols, no spaces);
+        public const string SingleInstanceMonikerName = "OpenPaintDotNet";
     }
 }
